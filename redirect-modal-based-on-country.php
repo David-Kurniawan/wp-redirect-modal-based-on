@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Redirect Modal Based On Country
  * Plugin URI:        https://wordpress.org/plugins/redirect-modal-based-on-country/
- * Description:       Awesome popup modal and simple to use WordPress plugin for redirection depending visitor's country
+ * Description:       Let your visitors know that your website is also available for their country
  * Version:           1.0.0
  * Author:            David Kurniawan
  * Author URI:        https://github.com/David-Kurniawan/

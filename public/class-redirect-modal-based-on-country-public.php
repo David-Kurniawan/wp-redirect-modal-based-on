@@ -60,31 +60,33 @@ class Redirect_Modal_Based_On_Country_Public {
 	 * @since    1.0.0
 	 */
 	public function rmboc_widget() {
-		// Check if visitor never stay
-		if (!$this->rmboc_visitor_stay()) {
-			// Get visitor IP
-			$visitorIp = $this->rmboc_ip_checker();
-			if ($visitorIp) {
-				// Collect Visitor IP Info
-				$visitorInfo = $this->rmboc_visitor_ip_info();
-				if ($visitorInfo) {
-					// Get Setting
-					if (isset($visitorInfo->countryCode) && !empty($visitorInfo->countryCode) && $visitorInfo->countryCode !== '') {
-						$setting = $this->rmboc_check_settings($visitorInfo->countryCode);
-						if ($setting) {
-							$host = get_site_url();
-							$host = parse_url($host, PHP_URL_HOST);
+		if (!is_admin()) {
+			// Check if visitor never stay
+			if (!$this->rmboc_visitor_stay()) {
+				// Get visitor IP
+				$visitorIp = $this->rmboc_ip_checker();
+				if ($visitorIp) {
+					// Collect Visitor IP Info
+					$visitorInfo = $this->rmboc_visitor_ip_info();
+					if ($visitorInfo) {
+						// Get Setting
+						if (isset($visitorInfo->countryCode) && !empty($visitorInfo->countryCode) && $visitorInfo->countryCode !== '') {
+							$setting = $this->rmboc_check_settings($visitorInfo->countryCode);
+							if ($setting) {
+								$host = get_site_url();
+								$host = parse_url($host, PHP_URL_HOST);
 
-							$cookieName = get_option(SHORT_PREFIX.'_cookie_name');
+								$cookieName = get_option(SHORT_PREFIX.'_cookie_name');
 
-					        $theme = plugin_dir_path( __DIR__ ).'public/partials/redirect-modal-based-on-country-public-display.php';
+						        $theme = plugin_dir_path( __DIR__ ).'public/partials/redirect-modal-based-on-country-public-display.php';
 
-							ob_start();
-							include($theme);
-							$body = ob_get_contents();
-							ob_end_clean();
+								ob_start();
+								include($theme);
+								$body = ob_get_contents();
+								ob_end_clean();
 
-							echo wp_kses($body, $this->rmboc_expanded_alowed_tags());
+								echo wp_kses($body, $this->rmboc_expanded_alowed_tags());
+							}
 						}
 					}
 				}
