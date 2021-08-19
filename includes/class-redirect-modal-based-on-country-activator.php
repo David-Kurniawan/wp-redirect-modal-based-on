@@ -30,8 +30,8 @@ class Redirect_Modal_Based_On_Country_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-        if (!get_option(SHORT_PREFIX.'_cookie_name')) {
-            add_option(SHORT_PREFIX.'_cookie_name', SHORT_PREFIX.'_'.md5(microtime(true)), '', 'yes');
+        if (!get_option(RMBOC_SHORT_PREFIX.'_cookie_name')) {
+            add_option(RMBOC_SHORT_PREFIX.'_cookie_name', RMBOC_SHORT_PREFIX.'_'.md5(microtime(true)), '', 'yes');
         }
 	}
 

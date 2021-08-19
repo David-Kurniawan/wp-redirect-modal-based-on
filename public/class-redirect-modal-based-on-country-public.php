@@ -76,7 +76,7 @@ class Redirect_Modal_Based_On_Country_Public {
 								$host = get_site_url();
 								$host = parse_url($host, PHP_URL_HOST);
 
-								$cookieName = get_option(SHORT_PREFIX.'_cookie_name');
+								$cookieName = get_option(RMBOC_SHORT_PREFIX.'_cookie_name');
 
 						        $theme = plugin_dir_path( __DIR__ ).'public/partials/redirect-modal-based-on-country-public-display.php';
 
@@ -146,7 +146,7 @@ class Redirect_Modal_Based_On_Country_Public {
 	 * @since    1.0.0
 	 */
 	public function rmboc_visitor_stay() {
-		$cookieName = get_option(SHORT_PREFIX.'_cookie_name');
+		$cookieName = get_option(RMBOC_SHORT_PREFIX.'_cookie_name');
 		if (isset($_COOKIE[$cookieName])) {
 			return true;
 		}
@@ -177,7 +177,7 @@ class Redirect_Modal_Based_On_Country_Public {
 	 */
 	public function rmboc_check_settings($countryCode)
 	{
-		$setting = cmb2_get_option( SHORT_PREFIX.'_options', SHORT_PREFIX.'_'.$countryCode );
+		$setting = cmb2_get_option( RMBOC_SHORT_PREFIX.'_options', RMBOC_SHORT_PREFIX.'_'.$countryCode );
 		if (!$setting) {
 			return;
 		}

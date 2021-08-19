@@ -9,7 +9,7 @@ class Redirect_Modal_Based_On_Country_API
 	 */
 	public function get_visitor_ip_info($ip)
 	{
-		$transientPrefix = SHORT_PREFIX.'_'.$ip;
+		$transientPrefix = RMBOC_SHORT_PREFIX.'_'.$ip;
 
 		if (false === get_transient( $transientPrefix )) {
 			$endpoint = 'http://ip-api.com/json/'.esc_attr($ip).'?fields=country,countryCode';

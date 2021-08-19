@@ -30,8 +30,8 @@ class Redirect_Modal_Based_On_Country_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-        if (get_option(SHORT_PREFIX.'_cookie_name')) {
-            delete_option(SHORT_PREFIX.'_cookie_name');
+        if (get_option(RMBOC_SHORT_PREFIX.'_cookie_name')) {
+            delete_option(RMBOC_SHORT_PREFIX.'_cookie_name');
         }
 	}
 

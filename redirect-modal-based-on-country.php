@@ -36,28 +36,35 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'REDIRECT_MODAL_BASED_ON_COUNTRY_VERSION', '1.0.0' );
-define( 'SHORT_PREFIX', 'rmboc' );
+define( 'RMBOC_SHORT_PREFIX', 'rmboc' );
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-redirect-modal-based-on-country-activator.php
- */
-function redirect_modal_based_on_country_activate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-redirect-modal-based-on-country-activator.php';
-	Redirect_Modal_Based_On_Country_Activator::activate();
+if (!function_exists('redirect_modal_based_on_country_activate')) {
+    /**
+     * The code that runs during plugin activation.
+     * This action is documented in includes/class-redirect-modal-based-on-country-activator.php
+     */
+    function redirect_modal_based_on_country_activate() {
+        require_once plugin_dir_path( __FILE__ ) . 'includes/class-redirect-modal-based-on-country-activator.php';
+        Redirect_Modal_Based_On_Country_Activator::activate();
+    }
+
+    register_activation_hook( __FILE__, 'redirect_modal_based_on_country_activate' );
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-redirect-modal-based-on-country-deactivator.php
- */
-function redirect_modal_based_on_country_deactivate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-redirect-modal-based-on-country-deactivator.php';
-	Redirect_Modal_Based_On_Country_Deactivator::deactivate();
+
+if (!function_exists('redirect_modal_based_on_country_deactivate')) {
+    /**
+     * The code that runs during plugin deactivation.
+     * This action is documented in includes/class-redirect-modal-based-on-country-deactivator.php
+     */
+    function redirect_modal_based_on_country_deactivate() {
+        require_once plugin_dir_path( __FILE__ ) . 'includes/class-redirect-modal-based-on-country-deactivator.php';
+        Redirect_Modal_Based_On_Country_Deactivator::deactivate();
+    }
+
+    register_deactivation_hook( __FILE__, 'redirect_modal_based_on_country_deactivate' );
 }
 
-register_activation_hook( __FILE__, 'redirect_modal_based_on_country_activate' );
-register_deactivation_hook( __FILE__, 'redirect_modal_based_on_country_deactivate' );
 
 /*Vendor*/
 require plugin_dir_path( __FILE__ ) . 'vendor/cmb2/init.php';
@@ -68,19 +75,21 @@ require plugin_dir_path( __FILE__ ) . 'vendor/cmb2/init.php';
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-redirect-modal-based-on-country.php';
 
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.0.0
- */
-function redirect_modal_based_on_country_run() {
+if (!function_exists('redirect_modal_based_on_country_run')) {
+    /**
+     * Begins execution of the plugin.
+     *
+     * Since everything within the plugin is registered via hooks,
+     * then kicking off the plugin from this point in the file does
+     * not affect the page life cycle.
+     *
+     * @since    1.0.0
+     */
+    function redirect_modal_based_on_country_run() {
 
-	$plugin = new Redirect_Modal_Based_On_Country();
-	$plugin->run();
+        $plugin = new Redirect_Modal_Based_On_Country();
+        $plugin->run();
 
+    }
+    redirect_modal_based_on_country_run();
 }
-redirect_modal_based_on_country_run();

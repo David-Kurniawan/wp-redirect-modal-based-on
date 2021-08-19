@@ -33,10 +33,10 @@ class Redirect_Modal_Based_On_Country_Admin_Menu {
          * Registers options page menu item and form.
          */
         $cmb = new_cmb2_box( array(
-            'id'           => SHORT_PREFIX,
+            'id'           => RMBOC_SHORT_PREFIX,
             'title'        => esc_attr('Redirect Modal Based On Country'),
             'object_types' => array( 'options-page' ),
-            'option_key'      => SHORT_PREFIX.'_options',
+            'option_key'      => RMBOC_SHORT_PREFIX.'_options',
             'parent_slug'     => 'options-general.php',
             'capability'      => 'manage_options',
         ) );
@@ -58,7 +58,7 @@ class Redirect_Modal_Based_On_Country_Admin_Menu {
             $cmb->add_field( array(
                 'name' => esc_attr( $result->text ),
                 'desc' => wp_sprintf( '%s %l', esc_html__( 'Full redirect URL if visitor country is from', 'redirect-modal-based-on-country' ), $result->text ),
-                'id'   => esc_attr(SHORT_PREFIX.'_'.$result->value),
+                'id'   => esc_attr(RMBOC_SHORT_PREFIX.'_'.$result->value),
                 'type' => 'text_url',
             ) );
         }
